@@ -14,9 +14,9 @@ if (!process.env.MONGO_URI) {
 
 // Middleware
 app.use(cors({
-  origin: ['http://localhost:5173', 'https://llov-frontend.vercel.app'], // Explicit frontend domains
+  origin: ['http://localhost:5173', 'https://llov-frontend.vercel.app'],
   methods: ['GET', 'POST', 'DELETE', 'PUT'],
-  credentials: true,
+  optionsSuccessStatus: 200 // For legacy browser support
 }));
 
 app.use(express.json());
