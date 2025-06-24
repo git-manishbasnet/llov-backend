@@ -72,9 +72,12 @@ app.get("/api/entries", async (req, res) => {
   }
 });
 
-// app.get("/favicon.ico", (req, res) => {
-//   res.status(204).end(); // No Content
-// });
+app.use(express.static(path.join(__dirname, 'build')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+
 // Start server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
